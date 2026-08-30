@@ -1,0 +1,23 @@
+# 编译产物
+build/
+*.o
+*.so
+*.exe
+
+# CUDA与性能分析临时文件
+*.nsys-rep
+*.ncu-rep
+*.log
+
+# Python缓存
+__pycache__/
+*.pyc
+
+# 大型模型和推理引擎
+*.pt
+*.pth
+*.onnx
+*.engine
+
+# 编辑器配置
+.vscode/
