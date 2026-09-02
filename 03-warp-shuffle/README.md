@@ -57,3 +57,19 @@ AIInfraGuide 2.1 Warp与执行模型：
 - mask 表示参与本次操作的线程集合。
 - src_lane 表示数据来源线程。
 - width 用于划分逻辑子 warp。
+
+## Warp Reduce
+
+使用 `__shfl_down_sync` 完成 Warp 内求和规约。
+
+- 每个 Warp 包含 32 个线程
+- 每个线程的初始值为 `laneId`
+- `offset` 依次为 16、8、4、2、1
+- 最终由 lane 0 得到完整求和结果
+- 理论结果：`0 + 1 + ... + 31 = 496`
+
+运行：
+
+```bash
+nvcc warp_reduction.cu -o warp_reduction
+./warp_reduction
