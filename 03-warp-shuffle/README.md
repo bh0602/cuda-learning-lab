@@ -73,3 +73,10 @@ AIInfraGuide 2.1 Warp与执行模型：
 ```bash
 nvcc warp_reduction.cu -o warp_reduction
 ./warp_reduction
+
+- 普通Shuffle从指定lane读取数据。
+- Shuffle Up从低编号lane读取数据。
+- Shuffle Down从高编号lane读取数据。
+- Shuffle XOR按照laneId XOR laneMask选择来源线程。
+- Warp Shuffle直接交换寄存器数据，不需要shared memory。
+- 当前实验启动一个完整Warp，因此使用0xffffffff作为参与掩码。
